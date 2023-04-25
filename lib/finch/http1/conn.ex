@@ -98,7 +98,7 @@ defmodule Finch.Conn do
   def request(conn, req, acc, fun, receive_timeout, idle_time) do
     full_path = Finch.Request.request_path(req)
 
-    metadata = %{request: req}
+    metadata = %{request: Map.delete(req, :body)}
 
     extra_measurements = %{idle_time: idle_time}
 
